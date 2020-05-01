@@ -18,17 +18,14 @@ def cvDrawBoxes(detections, img):
 # initilalize the person counter variable
     pc=0
     for detection in detections:
-        x, y, w, h = detection[2][0], 
-            detection[2][1],
-            detection[2][2],
-            detection[2][3]
+        x, y, w, h = detection[2][0],detection[2][1],detection[2][2],detection[2][3]
         xmin, ymin, xmax, ymax = convertBack(
             float(x), float(y), float(w), float(h))
         pt1 = (xmin, ymin)
         pt2 = (xmax, ymax)
         # add +1 to our person counter if we found a object 'person'
         if str(detection[0].decode()) == 'person':
-        pc+=1
+            pc+=1
         cv2.rectangle(img, pt1, pt2, (0, 255, 0), 1)
         cv2.putText(img, 
                     detection[0].decode()+
